@@ -1,0 +1,23 @@
+{% extends "blogapp/base_generic.html"%}
+{%block content%}
+    <h1 align="center" style="color:green"> List Of All The Blogs </h1>
+    
+    {% if perms.blogapp.can_add_blog%}
+    <a href="{%url 'create-blog'%}"> Create New Blog</a>
+    {%endif%}
+    <hr>
+    
+    <ul>
+        {%for blog in blog_list %}
+            <li><a href="{{blog.get_absolute_url}}">{{blog.title}}</a>, ({{blog.post_date}})-- <a href="{{blog.blogger.get_absolute_url}}">{{blog.blogger}}</a></li>
+            
+            {% if perms.blogapp.can_edit_blog %}
+            <a href="{%url 'update-blog' blog.id%}">Update</a>--<a href="{%url 'delete-blog' blog.id%}">Delete</a>
+            {% endif %}
+            <hr>
+        
+            {%empty%}
+            <li align="center" style="color:red">No Blog Available Yet.Come back Latter</li>
+        {%endfor%}
+    </ul>
+{%endblock%}

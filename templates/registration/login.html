@@ -1,0 +1,27 @@
+{%extends "blogapp/base_generic.html"%}
+{%block content%}
+    {%if form.errors%}
+        <p style="color:red">Wronge Email or Password</p>
+    {%endif%}
+    <form action="" method="post">
+        {%csrf_token%}
+        <table>
+            <tr>
+                <tr>
+                <td>{{form.username.label_tag}}</td>
+                <td>{{form.username}}</td>
+            </tr>
+            <tr>
+                <td>{{form.password.label_tag}}</td>
+                <td>{{form.password}}</td>
+            </tr>
+        </table>
+        <input type="submit" value="Login">
+        <input type="hidden" name="next" value={{next}}>
+    </form>
+    <a  class="btn btn-sm btn-primary" href="{%url 'register'%}">>>register</a>
+    <br>
+    <br>
+    <br>
+    <a  class="btn btn-min btn-primary" href="{%url 'password_reset'%}">LostPassword?</a>
+{%endblock%}

@@ -1,0 +1,22 @@
+{%extends "blogapp/base_generic.html"%}
+{%block content%}
+    <strong>Blogger : <i style="color:green" align="center">{{blogger}}</i></strong>
+    <hr>
+    <p><b> Bio :</b>{{blogger.biograpy}}</p>
+    <hr>
+    <p><b> Country/Residence :</b>{{blogger.nationality}}</p>
+    <p><b> D.O.B :</b>{{blogger.date_of_birth}}</p>
+    <div style="margin-top:30px;margin-left:30px;margin-right:500px">
+        <hr>
+        <p align="center" style="color:green"><b> Blogs</b></p>
+        <hr>
+    </ul>
+        {%for blog in blogger_blogs%}
+            <li> <a href="{{blog.get_absolute_url}}">{{blog}}</a>,({{blog.post_date}})</li>
+        {%empty%}
+            <li> No blog yet for you</li>
+        {%endfor%}
+    </ul>
+    </div>
+
+{%endblock%}

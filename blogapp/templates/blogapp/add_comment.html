@@ -1,0 +1,16 @@
+{%extends 'blogapp/base_generic.html'%}
+{% block title%}
+<title>Add comment</title>
+{%endblock%}
+{%block content%}
+    <h1 align="center" style="color:green"> {{blog.title}}</h1>
+    <hr>
+    <p><b> Post Your Comment For :</b><i style="color:green">{{blog.title}}</i></p>
+    <form action="" method = "post">
+        {%csrf_token%}
+        
+        {{form.as_p}}
+        
+    <input type="submit" value="post">
+    </form>
+{%endblock%}

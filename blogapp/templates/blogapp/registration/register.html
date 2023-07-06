@@ -1,0 +1,15 @@
+{%extends "blogapp/base_generic.html"%}
+{%block content%}
+    <p align="center" style="color:green"> Make Sure You Fill The Form Correctly</p>
+    {%if form.errors%}
+        <b> Please Check and fill the form correctle</b>
+    {%endif%}
+    <form action = "" method="post">
+        {%csrf_token%}
+        <table>
+            {{form}}
+        </table>
+        <input type="submit" value='Save'>
+        <input type="hidden" name="next" value={{next}}>
+    </form>
+{%endblock%}

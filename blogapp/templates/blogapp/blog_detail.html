@@ -1,0 +1,21 @@
+{%extends "blogapp/base_generic.html"%}
+{%block content%}
+    <h1> {{blog}}</h1>
+    <hr>
+    <p><b>Post Date :</b>{{blog.post_date}}</p>
+    <p><b>Blogger :</b>{{blog.blogger}}</p>
+    <p><b>Discription :</b>{{blog.discription}}</p>
+    <div style="margin-left:40px;margin-top:30px">
+        <b align="center">comments:</b>{{blog.comment_set.all.count}}
+        <hr>
+        {%for comment in blog_comments%}
+            <p> {{comment.commenter}} : ({{comment.comment_date}}) {{comment.comment}}</p>
+            <hr>
+            {%empty%}
+            <p>No Available comment</p>
+            {%endfor%}
+            <a href="{%url 'add-comment' blog.pk%}">Add Comment</a>
+
+    </div>
+
+{%endblock%}

@@ -1,0 +1,13 @@
+{%extends 'blogapp/base_generic.html'%}
+{%block content%}
+    <h1 align="center" style="color:green" > List Of All The Bloggers </h1>
+    <hr>
+    <br>
+    <ul>
+        {%for blogger in blogger_list%}
+    <li><a href="{{blogger.get_absolute_url}}">{{blogger}}</a> -- {{blogger.nationality}}</li>
+        {%empty%}
+            <li align="center" style="color:red"> No Available Blogger Yet! Comeback Letter</li>
+        {%endfor%}
+    </ul>
+{%endblock%}
